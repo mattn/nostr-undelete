@@ -5,7 +5,7 @@ undelete nostr account
 ## Usage
 
 ```
-$ ./nostr-undelete npub1xxxxxx
+$ ./nostr-undelete nsec1xxxxxx
 ```
 
 ## License
