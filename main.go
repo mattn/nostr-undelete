@@ -11,6 +11,12 @@ import (
 	"github.com/nbd-wtf/go-nostr/nip19"
 )
 
+const name = "nostr-undelete"
+
+const version = "0.0.0"
+
+var revision = "HEAD"
+
 func main() {
 	priv := os.Args[1]
 	var pub string
