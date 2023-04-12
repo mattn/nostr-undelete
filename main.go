@@ -278,6 +278,7 @@ func main() {
 	}
 
 	for _, r := range relays {
+		log.Println(r)
 		sendUndelete(r, ev)
 	}
 }
