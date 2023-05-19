@@ -3,8 +3,8 @@ package main
 import (
 	"context"
 	"encoding/json"
+	"flag"
 	"log"
-	"os"
 	"time"
 
 	"github.com/nbd-wtf/go-nostr"
@@ -225,7 +225,11 @@ func sendUndelete(r string, ev nostr.Event) {
 }
 
 func main() {
-	priv := os.Args[1]
+	var checkRelay string
+	flag.StringVar(&checkRelay, "relay", "wss://nostr-relay.nokotaro.com", "relay for checking metadata")
+	flag.Parse()
+
+	priv := flag.Arg(0)
 	var pub string
 	if _, s, err := nip19.Decode(priv); err != nil {
 		log.Fatal(err)
@@ -240,7 +244,7 @@ func main() {
 		Limit:   1,
 	}
 
-	relay, err := nostr.RelayConnect(context.Background(), "wss://nostr-relay.nokotaro.com")
+	relay, err := nostr.RelayConnect(context.Background(), checkRelay)
 	if err != nil {
 		log.Fatal(err)
 	}
@@ -248,6 +252,9 @@ func main() {
 	evs, err := relay.QuerySync(context.Background(), filter)
 	if err != nil {
 		log.Fatal(err)
+	}
+	if len(evs) == 0 {
+		log.Fatalf("metadata not found on %s", relay)
 	}
 	var m map[string]any
 	err = json.Unmarshal([]byte(evs[0].Content), &m)
