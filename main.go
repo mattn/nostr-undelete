@@ -215,6 +215,7 @@ func sendUndelete(r string, ev nostr.Event) {
 	relay, err := nostr.RelayConnect(context.Background(), r)
 	if err != nil {
 		log.Println(err, relay.URL)
+		return
 	}
 	defer relay.Close()
 
