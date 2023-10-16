@@ -209,6 +209,7 @@ var relays = []string{
 	"wss://nostr.zerofiat.world",
 	"wss://rs1.abaiba.top",
 	"wss://rs2.abaiba.top",
+	"wss://yabu.me",
 }
 
 func sendUndelete(r string, ev nostr.Event) {
