@@ -5,7 +5,6 @@ import (
 	"encoding/json"
 	"flag"
 	"log"
-	"time"
 
 	"github.com/nbd-wtf/go-nostr"
 	"github.com/nbd-wtf/go-nostr/nip19"
@@ -279,7 +278,7 @@ func main() {
 
 	var ev nostr.Event
 	ev.PubKey = pub
-	ev.CreatedAt = time.Now()
+	ev.CreatedAt = nostr.Now()
 	ev.Content = string(b)
 	ev.Kind = nostr.KindSetMetadata
 	if err := ev.Sign(sk); err != nil {
