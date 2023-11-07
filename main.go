@@ -12,7 +12,7 @@ import (
 
 const name = "nostr-undelete"
 
-const version = "0.0.8"
+const version = "0.0.9"
 
 var revision = "HEAD"
 
