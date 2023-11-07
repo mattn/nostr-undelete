@@ -240,7 +240,7 @@ func main() {
 		}
 	}
 	filter := nostr.Filter{
-		Kinds:   []int{nostr.KindSetMetadata},
+		Kinds:   []int{nostr.KindProfileMetadata},
 		Authors: []string{pub},
 		Limit:   1,
 	}
@@ -280,7 +280,7 @@ func main() {
 	ev.PubKey = pub
 	ev.CreatedAt = nostr.Now()
 	ev.Content = string(b)
-	ev.Kind = nostr.KindSetMetadata
+	ev.Kind = nostr.KindProfileMetadata
 	if err := ev.Sign(sk); err != nil {
 		log.Fatal(err)
 	}
