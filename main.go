@@ -219,7 +219,7 @@ func sendUndelete(r string, ev nostr.Event) {
 	}
 	defer relay.Close()
 
-	_, err = relay.Publish(context.Background(), ev)
+	err = relay.Publish(context.Background(), ev)
 	if err != nil {
 		log.Println(err, relay.URL)
 	}
